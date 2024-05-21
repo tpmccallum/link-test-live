@@ -18,7 +18,7 @@ async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
     // Extract the JSON data from the body of the response
     let json_data: Value = serde_json::from_slice(&response.body())?;
     // Create a new instance of the struct (an index variable) that stores the timestamp and uvi
-    let url = json_data["url"].to_string().as_str();
+    let url = json_data["url"].to_string().clone();
     // Create a new request that checks the URL (obviously this will be checking many in the future not just one)
     let request_two = Request::builder()
     .method(Method::Get)

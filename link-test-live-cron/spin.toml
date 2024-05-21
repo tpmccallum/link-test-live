@@ -16,7 +16,7 @@ api_key = { default = "nil" }
 
 [component.link-test-live-cron]
 source = "target/wasm32-wasi/release/link_test_live_cron.wasm"
-allowed_outbound_hosts = ["https://*"]
+allowed_outbound_hosts = ["https://link-test-live-cloud.fermyon.app", "https://developer.fermyon.com"]
 [component.link-test-live-cron.build]
 command = "cargo build --target wasm32-wasi --release"
 watch = ["src/**/*.rs", "Cargo.toml"]
