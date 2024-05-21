@@ -20,12 +20,13 @@ async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
     // Create a new instance of the struct (an index variable) that stores the timestamp and uvi
     let url = json_data["url"].to_string().as_str();
     // Create a new request that checks the URL (obviously this will be checking many in the future not just one)
-    let request = Request::builder()
+    let request_two = Request::builder()
     .method(Method::Get)
     // need to add json body here that bundles up the links_per_batch and the user's api key 
     .uri(url)
     .build();
+    let _response_two: Response = spin_sdk::http::send(request_two).await?;
     // Check the URL and create a new json object to send to the cloud
-    println!("Processed {:?} at timestamp: [{}]", url, metadata.timestamp);
+    println!("Processed at timestamp: [{}]", metadata.timestamp);
     Ok(())
 }
