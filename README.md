@@ -71,7 +71,7 @@ Save the key and also add it to your config:
 api_key = { default = "ltl-0x1234" }
 ```
 
-## Configure
+## Configuration
 
 Open the `spin.toml` file and list any of the domains that you are comfortable with your node visiting. for example you can add `https://developer.fermyon.com` as a trusted site that you are prepared to check links for: 
 
@@ -85,6 +85,8 @@ If you just want to check links for all sites, then use the following wildcard:
 ```toml
 allowed_outbound_hosts = ["https://*"]
 ```
+
+## Advanced Configuration (Optional)
 
 **You do not need to touch this unless you are an advanced user.**
 
