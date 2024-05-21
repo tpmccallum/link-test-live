@@ -1,0 +1,18 @@
+[package]
+name = "link-test-live-cron"
+authors = ["tpmccallum <tim.mccallum@fermyon.com>"]
+description = "A cron component that checks links in real-time"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.71"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+spin-sdk = "3.0.1"
+spin-cron-sdk = { git = "https://github.com/fermyon/spin-trigger-cron/" }
+serde_json = "1.0.117"
+anyhow = "1.0.86"
+
+[workspace]

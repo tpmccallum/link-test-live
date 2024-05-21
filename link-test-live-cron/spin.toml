@@ -1,0 +1,26 @@
+spin_manifest_version = 2
+
+[application]
+name = "link-test-live-cron"
+version = "0.1.0"
+authors = ["tpmccallum <tim.mccallum@fermyon.com>"]
+description = "A cron component that checks links in real-time"
+
+[[trigger.cron]]
+component = "link-test-live-cron"
+cron_expression = "0 * * * * *"
+
+[variables]
+links_per_batch = { default = "5" }
+api_key = { default = "nil" }
+
+[component.link-test-live-cron]
+source = "target/wasm32-wasi/release/link_test_live_cron.wasm"
+allowed_outbound_hosts = ["https://*"]
+[component.link-test-live-cron.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
+
+[component.link-test-live-cron.variables]
+links = "{{ links_per_batch }}"
+key = "{{ api_key }}"
