@@ -18,6 +18,7 @@ fn handle_cron_event(metadata: Metadata) -> Result<(), Error> {
             // need to add json body here that bundles up the links_per_batch and the user's api key 
             .uri("https://link-test-live-cloud.fermyon.app")
             .build();
+        // The response will be as follows {"url": "https://developer.fermyon.com}
         // Await the response from the API, then store the response
         let response: Response = spin_sdk::http::send(request).await?;
         // Extract the JSON data from the body of the response
