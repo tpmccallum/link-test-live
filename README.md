@@ -1,6 +1,6 @@
 # Link Test Live (LTL)
 
-![link-checker-live](https://github.com/tpmccallum/link-test-live/assets/9831342/4282bbba-7473-4724-8af2-bff979f5ac29)
+![link-checker-live (1)](https://github.com/tpmccallum/link-test-live/assets/9831342/77891587-d0f3-4243-adc7-c1670a3c8744)
 
 `More than a broken link checker. Clone this repo, run a node, and join the fun.`
 
