@@ -61,6 +61,7 @@ Use the following command to run your LTL node:
 ## Make sure that you are still in the link-test-live/link-test-live-cron directory
 spin build --up
 Thank you - your api key is ltl-0x1234. Please save this key and add to the api_key in your spin.toml file.
+Please construct a secure HTTP request 
 ```
 
 On its maiden voyage, your node will fetch an API key from the Cloud API. **SAVE THIS KEY - IT STORES YOUR POINTS**
@@ -155,6 +156,51 @@ spin up > /dev/null 2>&1 &
 
 > The above is only recommended for advanced users. Note, you will not receive any logs and you will also need to know how to stop that process from running. _hint: you use a combination of the `jobs` command the `fg` command and  `ctrl` + `c`_
 
+## Checking URLs using LTL Cloud API 
+
+To use the LTL Cloud API create an HTTPS request using the POST verb and include the following JSON format as the body of the request:
+
+```json
+{
+    "api_key": "ltl-0x1234",
+    "urls": [
+        "https://developer.fermyon.com/",
+        "https://developer.fermyon.com/spin/v2/testing-apps",
+        "https://developer.fermyon.com/hub/preview/pattern_long_running_jobs_over_http"
+    ]
+}
+```
+
+The above JSON shows how we use out `api_key`, `urls` (the list of urls that we want the Cloud API to check for us).
+
+Python Example:
+
+```py
+# python3 -m venv venv-dir
+# source venv-dir/bin/activate
+# python3 -m pip install requests
+
+import requests
+
+# URL to which the POST request will be sent
+url = 'https://link-test-live-cloud.fermyon.app/'
+
+# List of URLs to be sent as JSON data in the POST request body
+data = {
+    "api_key": "ltl-0x1234",
+    "urls": [
+        "https://developer.fermyon.com/",
+        "https://developer.fermyon.com/spin/v2/testing-apps",
+        "https://developer.fermyon.com/hub/preview/pattern_long_running_jobs_over_http"
+    ],
+    "allowed_outbound_hosts": ["https://developer.fermyon.com"]
+}
+
+# Send the POST request
+response = requests.post(url, json=data)
+print(response.text)
+```
+
 # F.A.Q.
 
 Below are answers to some Frequently Asked Questions:
@@ -171,3 +217,4 @@ Below are answers to some Frequently Asked Questions:
   If a node sends incorrect information to the LTL API, no points are given to that node, and the data is not stored.
 
 If you would like to add an F.A.Q please [open an issue](https://github.com/tpmccallum/link-test-live/issues).
+
