@@ -6,6 +6,7 @@ use spin_sdk::{
 
 #[cron_component]
 async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
+    println!("Handling cron event at timestamp: [{}]", metadata.timestamp);
     // Build request to the Cloud API
     let request = Request::builder()
         .method(Method::Get)
@@ -27,6 +28,7 @@ async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
     .build();
     let _response_two: Response = spin_sdk::http::send(request_two).await?;
     // Check the URL and create a new json object to send to the cloud
+    // Cater for robots.txt that tells us how frequently to hit a site 
     println!("Processed at timestamp: [{}]", metadata.timestamp);
     Ok(())
 }
