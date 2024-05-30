@@ -8,15 +8,18 @@ description = "A cron component that checks links in real-time"
 
 [[trigger.cron]]
 component = "link-test-live-cron"
-cron_expression = "0 * * * * *"
+cron_expression = "0 * * * * * *"
 
 [variables]
 links_per_batch = { default = "5" }
 api_key = { default = "nil" }
+host_whitelist = { default = '["https://*"]' }
+mode_of_operation = { default = "cloud" }
 
 [component.link-test-live-cron]
 source = "target/wasm32-wasi/release/link_test_live_cron.wasm"
-allowed_outbound_hosts = ["https://link-test-live-cloud.fermyon.app", "https://developer.fermyon.com"]
+allowed_outbound_hosts = ["https://*"]
+key_value_stores = ["default"]
 [component.link-test-live-cron.build]
 command = "cargo build --target wasm32-wasi --release"
 watch = ["src/**/*.rs", "Cargo.toml"]
@@ -24,3 +27,5 @@ watch = ["src/**/*.rs", "Cargo.toml"]
 [component.link-test-live-cron.variables]
 links = "{{ links_per_batch }}"
 key = "{{ api_key }}"
+hosts = "{{ host_whitelist }}"
+mode = "{{ mode_of_operation }}"

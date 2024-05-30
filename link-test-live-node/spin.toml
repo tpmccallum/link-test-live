@@ -1,7 +1,0 @@
-spin_manifest_version = 2
-
-[application]
-name = "link-test-live-node"
-version = "0.1.0"
-authors = ["tpmccallum <tim.mccallum@fermyon.com>"]
-description = "A node that runs link checking for others"
