@@ -66,7 +66,7 @@ spin build --up
 
 On its maiden voyage, your node will fetch an API key from the Cloud API and automatically save it inside your app.
 
-## Configuration
+## Configuration (Optional)
 
 ### Restrict Allowed Outbound Hosts (Optional)
 
