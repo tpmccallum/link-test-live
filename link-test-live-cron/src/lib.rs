@@ -8,7 +8,7 @@ use spin_sdk::{
 };
 
 #[cron_component]
-async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
+async fn handle_cron_event(_metadata: Metadata) -> anyhow::Result<()> {
     let cloud_url;
     if variables::get("mode")? == "local" {
         println!("Test mode enabled ... using locahost ...");
@@ -30,10 +30,10 @@ async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
                 Some(busy_value) => match std::str::from_utf8(&busy_value) {
                     Ok(busy_str) => match busy_str {
                         "yes" => {
-                            println!("Still busy checking the last batch of links. Will try again later ...\n If you used Ctrl + C to stop you can visit this link < http://localhost:3000/reset > to reset the busy flag");
+                            println!("Still busy checking the last batch of links. Will try again later ...\n\nIf you used Ctrl + C to stop you can visit this link\n\n< http://localhost:3000/reset >\n\nto reset the busy flag");
                         }
                         "no" => {
-                            let mut json_result = json!({
+                            let mut _json_result = json!({
                                 "urls": [],
                             });
                             println!("Fetching new batch of links to check ...");
@@ -91,7 +91,7 @@ async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
                                 let response: Response = spin_sdk::http::send(request).await?;
                                 let response_code: u16 = *response.status();
                                 if response_code == 200 {
-                                    let response_body = std::str::from_utf8(&response.body())?;
+                                    let _response_body = std::str::from_utf8(&response.body())?;
                                     store.set("busy", "no".as_bytes())?;
                                 } else {
                                     println!("Failed to award points! Something went wrong ...");
@@ -148,9 +148,4 @@ impl APIURL {
     fn url_to_string(&self) -> String {
         format!("{}", self.url)
     }
-}
-
-#[derive(Debug)]
-struct CheckList {
-    urls: Vec<String>,
 }
