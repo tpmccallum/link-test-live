@@ -8,7 +8,7 @@ description = "A cron component that checks links in real-time"
 
 [[trigger.cron]]
 component = "link-test-live-cron"
-cron_expression = "1/15 * * * * * *"
+cron_expression = "0 * * * * * *"
 
 [variables]
 links_per_batch = { default = "5" }
