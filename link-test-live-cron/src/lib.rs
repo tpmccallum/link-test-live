@@ -30,7 +30,7 @@ async fn handle_cron_event(metadata: Metadata) -> anyhow::Result<()> {
                 Some(busy_value) => match std::str::from_utf8(&busy_value) {
                     Ok(busy_str) => match busy_str {
                         "yes" => {
-                            println!("Still busy checking the last batch of links. Will try again later ...");
+                            println!("Still busy checking the last batch of links. Will try again later ...\n If you used Ctrl + C to stop you can visit this link < http://localhost:3000/reset > to reset the busy flag");
                         }
                         "no" => {
                             let mut json_result = json!({

@@ -29,3 +29,16 @@ links = "{{ links_per_batch }}"
 key = "{{ api_key }}"
 hosts = "{{ host_whitelist }}"
 mode = "{{ mode_of_operation }}"
+
+[[trigger.http]]
+route = "/reset"
+component = "reset"
+
+[component.reset]
+source = "reset/target/wasm32-wasi/release/reset.wasm"
+allowed_outbound_hosts = []
+key_value_stores = ["default"]
+[component.reset.build]
+command = "cargo build --target wasm32-wasi --release"
+workdir = "reset"
+watch = ["src/**/*.rs", "Cargo.toml"]
