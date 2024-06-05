@@ -1,41 +1,46 @@
 
-# Link Test Live (LTL)
+# Link Test Live
 
-![link-checker-live (1)](https://github.com/tpmccallum/link-test-live/assets/9831342/77891587-d0f3-4243-adc7-c1670a3c8744)
+Together, we can make it the holy grail - 'cause technically, we only need one!
 
-`More than a broken link checker. Clone this repo, run a node, and join the fun.`
+![the_holy_grail](https://github.com/tpmccallum/link-test-live/assets/9831342/ac8dee69-e654-48d2-ab82-eee5b4ffe9c4)
 
-# Why LTL?
+**_Clone this repo, run a node and join the fun._**
+
+# Why Link Test Live (LTL)?
 
 There are many reasons for you to try LTL:
 - You get to experience the fastest link checker on the block.
-- No infrastructure is needed on your end, just a Linux machine and a network connection.
-- You get to run your own node and contribute to the global link-checking revolution.
-- You get extra points for overachieving.
+- No infrastructure is needed on your end; it just needs a Linux machine and a network connection.
+- You can run your own node and contribute to the global link-checking revolution.
+- A stranger smiles every time you check a link.
 - It's fun - _apparently_.
 
 # How does LTL work?
 
-Anybody (you) can run the LTL software on your local machine and help check links for others.
+Anybody (you) can run the LTL software on your local machine. Here is [a blog post on the matter](https://www.fermyon.com/blog/turbocharging-broken-link-checking).
 
-If you configure your LTL node to check just 5 links per minute, you can be responsible for 300 links per hour of freshness. If another 99 users, just like you, each run a node (that also checks just 5 links per minute), then collectively, you will **all** be responsible for the freshness of 30,000 links per hour. No current limit exists to the number of users running their own node.
-You can go beyond the default batch cadence and number of links per batch to be an overachiever.
+# Quantity
+
+This is no lazy last-minute link checker (that linearly forces its way through links at build time), LTL is prepared ahead of time and can instantly provide status codes for links whenever you need them.
+
+# Quantity
+
+Your node will check 5 links per minute (300 per hour). If another 99 users just like you run a node, collectively we are checking 30 thousand links per hour. Sp spread the word.
 
 # What’s in It for Me?
 
-When your node performs link checks, your node automatically sends the data to the LTL API. You are helping check links for yourself and for others.
+You are not only helping others check links; you can submit your own links for checking.
 
-Long-term idea: If you fill out the default link checking quota, then your API key will be rewarded with points. (The points system is more of a long-term goal/experiment so don't get too caught up in that just now.)
-
-In the future, I might set it up so you get 1 point for each checked link when your quota is above the default. Perhaps you could get 3 points for each checked link when your quota is above **double** the default quota. We will see. For now, I just want everyone to be able to make a secure HTTP request to see the link checker return results. This part will be free for now.
+There may be a points system in the future, but for now, don't worry; just join the fun.
 
 # Life Without LTL
 
-Using LTL is the same as checking your own links yourself, except without LTL, you will ~~be lonely~~ need to set up infrastructure. For example, you must set up an application and database to store URLs and responses and maintain that infrastructure. With LTL, we do it all for you. You can run your node and forget about it. When you are ready to perform your own link checking for your content, you just call the LTL API and get a link-point ratio of 1:1.
+Using LTL is the same as checking your own links, except without LTL, you will ~~be lonely~~ need to set up infrastructure. For example, an application and database that can keep track of your URLs as well as an API to fetch status codes etc. With LTL, we do it all for you. You can run your node and forget about it. When you are ready to perform your own link checking for your content, call the LTL API.
 
 # Get Started
 
-Following the process outlined below to get started.
+Follow the process outlined below to get started.
 
 ## Installing Spin
 
@@ -112,3 +117,5 @@ curl -X POST https://link-test-live-cloud.fermyon.app \
            ]
          }'
 ```
+
+That's about it; [if you want to see the front end in action **click here**](https://link-test-live-cloud.fermyon.app/frontend).
