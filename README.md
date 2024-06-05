@@ -32,7 +32,15 @@ Your node will check 5 links per minute (300 per hour). If another 99 users just
 
 You are not only helping others check links; you can submit your own links for checking.
 
-There may be a points system in the future, but for now, don't worry; just join the fun.
+There may be a points system in the future, but for now don't worry; just join the fun.
+
+# What's under the hood?
+
+LTL, is:
+- Written in #Rust,
+- built with #Spin,
+- powered by #WebAssembly, and
+- hosted on #Fermyon #Cloud.
 
 # Life Without LTL
 
